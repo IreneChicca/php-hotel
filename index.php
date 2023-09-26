@@ -50,6 +50,16 @@
     <title>Document</title>
 </head>
 <body>
+    <?php
     
+        foreach ($hotels as  $hotel) {
+          foreach ($hotel as $element)
+                { 
+                    echo "$element <br>";
+                }
+
+        };
+    
+    ?>
 </body>
 </html>
