@@ -90,8 +90,10 @@
   <tbody>
 <?php
     
-    if($parking == 'Yes')
+    if($parking != 'Yes'){
         foreach ($hotels as  $hotel) {
+
+        // if($hotel['parking'] == 1)    
        echo  "<tr>
        <td>".$hotel['name']."</td>
       <td>".$hotel['description']."</td>
@@ -105,11 +107,31 @@
 
       <td>".$hotel['vote']."</td>
       <td>".$hotel['distance_to_center']."</td>"
-    ;
+    ;        
+}}
 
-          
+    else {
+        foreach ($hotels as  $hotel) {
 
-        };
+             if($hotel['parking'])    
+           echo  "<tr>
+           <td>".$hotel['name']."</td>
+          <td>".$hotel['description']."</td>
+    
+          <td>". 
+        $hotel['parking'].
+          "</td>
+    
+          <td>".$hotel['vote']."</td>
+          <td>".$hotel['distance_to_center']."</td>"
+        ;        
+    }
+
+
+    }
+
+;
+
     
     ?>
 
