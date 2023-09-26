@@ -63,7 +63,7 @@
 <select class="form-select" aria-label="Default select example" name="parking">
   <option selected>Parking</option>
   <option value="Yes">Yes</option>
-  <option value="No">No</option>
+  
   
 
 </select>
@@ -100,7 +100,7 @@
   <tbody>
 <?php
     // 
-    if(($parking == 'Parking' || $parking == 'No')  && $vote == 'Vote'){
+    if($parking == 'Parking'   && $vote == 'Vote'){
         foreach ($hotels as  $hotel) {
 
            
@@ -157,7 +157,7 @@
     }
     }
 
-    elseif(($parking == 'Parking' || $parking == 'No')  && $vote != 'Vote') {
+    elseif($parking == 'Parking'  && $vote != 'Vote') {
         foreach ($hotels as  $hotel) {
 
              if($hotel['vote'] >= $vote)    
