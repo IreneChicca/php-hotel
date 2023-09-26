@@ -40,6 +40,11 @@
 
     ];
 
+
+    $parking =$_GET['parking'];
+
+
+
 ?>
 
 <!DOCTYPE html>
@@ -52,6 +57,19 @@
 </head>
 <body>
     
+<form method="GET" action="" class="w-75 p-5">
+
+
+<select class="form-select" aria-label="Default select example" name="parking">
+  <option selected>Parking</option>
+  <option value="Yes">Yes</option>
+  <option value="No">No</option>
+  
+
+</select>
+<button class="btn btn-primary mt-3">Send</button>
+</form>
+
 
 
 
@@ -72,6 +90,7 @@
   <tbody>
 <?php
     
+    if($parking == 'Yes')
         foreach ($hotels as  $hotel) {
        echo  "<tr>
        <td>".$hotel['name']."</td>
@@ -88,10 +107,7 @@
       <td>".$hotel['distance_to_center']."</td>"
     ;
 
-          foreach ($hotel as $element) 
-                { 
-                    // echo $hotel['name'];
-                }
+          
 
         };
     
