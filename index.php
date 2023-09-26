@@ -42,7 +42,7 @@
 
 
     $parking =$_GET['parking'];
-
+    $vote =$_GET['vote'];
 
 
 ?>
@@ -64,6 +64,16 @@
   <option selected>Parking</option>
   <option value="Yes">Yes</option>
   <option value="No">No</option>
+  
+
+</select>
+<select class="form-select mt-3" aria-label="Default select example" name="vote">
+  <option selected>Vote</option>
+  <option value="1">1</option>
+  <option value="2">2</option>
+  <option value="3">3</option>
+  <option value="4">4</option>
+  <option value="5">5</option>
   
 
 </select>
@@ -89,28 +99,28 @@
   </thead>
   <tbody>
 <?php
-    
-    if($parking != 'Yes'){
+    // 
+    if(($parking == 'Parking' || $parking == 'No')  && $vote == 'Vote'){
         foreach ($hotels as  $hotel) {
 
-        // if($hotel['parking'] == 1)    
+           
        echo  "<tr>
        <td>".$hotel['name']."</td>
       <td>".$hotel['description']."</td>
 
       <td>". 
       
-      //if($hotel['parking']) ? 'yes' : 'no'  
-
-      $hotel['parking'].
+      // if($hotel['parking']) ? echo 'yes' : echo 'no'
+      $hotel['parking']
+      .
       "</td>
 
       <td>".$hotel['vote']."</td>
       <td>".$hotel['distance_to_center']."</td>"
     ;        
-}}
+    }}
 
-    else {
+    elseif($parking== 'Yes' && $vote== 'Vote') {
         foreach ($hotels as  $hotel) {
 
              if($hotel['parking'])    
@@ -126,8 +136,43 @@
           <td>".$hotel['distance_to_center']."</td>"
         ;        
     }
+    }
 
 
+    elseif($parking== 'Yes' && $vote != 'Vote') {
+        foreach ($hotels as  $hotel) {
+
+             if($hotel['parking'] && $hotel['vote'] >= $vote)    
+           echo  "<tr>
+           <td>".$hotel['name']."</td>
+          <td>".$hotel['description']."</td>
+    
+          <td>". 
+        $hotel['parking'].
+          "</td>
+    
+          <td>".$hotel['vote']."</td>
+          <td>".$hotel['distance_to_center']."</td>"
+        ;        
+    }
+    }
+
+    elseif(($parking == 'Parking' || $parking == 'No')  && $vote != 'Vote') {
+        foreach ($hotels as  $hotel) {
+
+             if($hotel['vote'] >= $vote)    
+           echo  "<tr>
+           <td>".$hotel['name']."</td>
+          <td>".$hotel['description']."</td>
+    
+          <td>". 
+        $hotel['parking'].
+          "</td>
+    
+          <td>".$hotel['vote']."</td>
+          <td>".$hotel['distance_to_center']."</td>"
+        ;        
+    }
     }
 
 ;
